@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  RFP Knowledge 
+{% endblock %}
+{% block container %}
+
+<html data-theme="dark">
+    <head>
+        <title>  Main</title>
+    </head>
+    <body>
+        <center>
+        <h1> RFPDonkey </h1>
+        <img src="{% static "donkey.png" %}" alt="RFPDonkey" width="200px" height="200px">
+        <br><br>
+        <h3> RFP Q/A Database</h3>
+        </center>
+        <form action="" name="frm">{% csrf_token %} </form>
+    </body>
+</html>
+{% endblock %}

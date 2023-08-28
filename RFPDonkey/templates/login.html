@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load static %}
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static "css/pico/pico.min.css" %}">
+  <script type="text/javascript" src="{% static 'functions.js' %}"></script>
+  <title>RFPDonkey</title>
+  {% block header %}
+  
+  {% endblock %}
+</head>
+<body>
+
+<main class="container">
+  {% block container %}
+  <form action="" name="frm">
+    {% csrf_token %} 
+    <table width="50%">
+      <tr >
+        <td width="1%"><img src="{% static "donkey.png" %}" alt="RFPDonkey" width="90px" height="90px"></td>
+        <td width="20%"><div style="font-size:40px">RFPDonkey</div>
+        <small>RFP Q/A Database</small></td>
+      </tr>
+      <tr>
+        <td width="10%" align="center">
+          {% if login == "false" %}
+            <h3> Authentication Failed ! </h3>
+          {% endif %}
+          <table align="center">
+              <tr>
+                  <td>User Name: <input type="text" name ="user_name" size="20"></td>
+              </tr>
+              <tr>
+                  <td >Password:  <input type="password" name="user_password" size="20"></td>
+              </tr>
+          </table>
+          <a role="button" href="javascript:Login()"> OK </a>
+          <a role="button" href="javascript:()"> Cancel  </a>
+        </td>
+      </tr>
+    </table>
+  </form>
+  {% endblock %}
+</main>
+
+</body>
+</html>

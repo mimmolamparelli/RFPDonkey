@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load static %}
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static "css/pico/pico.min.css" %}">
+  <script type="text/javascript" src="{% static 'functions.js' %}"></script>
+  <title>RFPDonkey</title>
+  {% block header %}
+  
+  {% endblock %}
+</head>
+<body>
+
+<main class="container">
+  {% block container %}
+  <form action="" name="frm">
+    {% csrf_token %} 
+    <table width="50%">
+      <tr >
+        <td width="1%"><img src="{% static "donkey.png" %}" alt="RFPDonkey" width="90px" height="90px"></td>
+        <td width="20%"><div style="font-size:40px">RFPDonkey</div>
+        <small>Partner Type</small></td>
+      </tr>
+      <tr>
+      
+          <table align="center">
+            <tr>
+                <td>
+                    <input type="hidden"  name = "id" value ="{{id}}">
+                </td>
+            </tr>
+              <tr>
+                  <td>Product Name: {{product_name}}</td>
+                  <td >Description:  {{product_description}}</td>
+              </tr>
+              <tr>
+                  <td >Type: {{product_type}}</td>
+                  <td >Active:  {{product_active}}</td>
+              </tr>
+          </table>          
+        </td>
+      </tr>
+      <tr>
+        <!--td>
+            <small><a role ="menuitem" href="javascript:TenderLUAdd()">Add</a></small>
+        </td>
+        <td>
+            <small><a role ="menuitem" href="javascript:TenderLUUpdate()">Update</a></small>
+        </td>
+        <td>
+            <small><a role ="menuitem" href="javascript:TenderLUDelete()">Delete</a></small>
+        </td-->
+        <td>
+            <small><a role ="menuitem" href="javascript:TenderLUClose()">Close</a></small>
+        </td>
+      </tr>
+    </table>
+  </form>
+  {% endblock %}
+</main>
+
+</body>
+</html>
