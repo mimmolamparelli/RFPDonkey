@@ -11,8 +11,6 @@ import math
 
 items_per_page = 10
 dict_user_roles ={"User":"USR","Administrator":"ADM","Other":"OTH"}
-user_role = None
-
 
 @csrf_protect
 def test(request,a,b):
@@ -35,18 +33,14 @@ def login(request):
 
 @csrf_protect
 def authenticate(request):
-    global user_role
     user_name = request.POST.get("user_name")
     user_password = request.POST.get("user_password")
     user = system_user.objects.filter(user_name=user_name, user_password=user_password).count()
     if user>0:
-        sel_user = system_user.objects.filter(user_name=user_name, user_password=user_password).first()
-        user_role = sel_user.user_role.split(",")
         template = loader.get_template("main.html")    
         context = {
         "user_name":user_name,
-        "user_password":user_password,
-        "user_role":user_role
+        "user_password":user_password
         }
         request.session["AUTH"] = True
     else:
@@ -59,16 +53,6 @@ def authenticate(request):
 
 @csrf_protect
 def product_new(request,c_page,t_pages):
-    access = False
-    for r in user_role:
-        if r  in dict_user_roles.values():
-            access = True
-    if access == False:    
-        template = loader.get_template("login.html") 
-        context = {
-                "login":"false"
-                }
-        return HttpResponse(template.render(context, request))
     previous = False
     next = False
     start_page = (c_page-1)*items_per_page

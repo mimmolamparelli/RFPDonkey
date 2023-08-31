@@ -12,9 +12,6 @@ class system_user(models.Model):
     def __str__(self):
         return self.user_name
     
-class access_per_role(models.Model):
-    func_code = models.CharField(max_length=7, null=False, default = "NUL_FUN")
-    role_code = models.CharField(max_length=7,null=False, default="USR")
 
 class test_class(models.Model):
     test_field = models.CharField(max_length=100,null=True)
